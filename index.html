@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    A
     <script type="module">
         // import kaplay
         import kaboom from "https://unpkg.com/kaplay@3001.0.0-alpha.15/dist/kaboom.mjs";
@@ -16,17 +17,17 @@
         })
         function addObs() {
 
-loop(1.7, () => {
-    add([
-        pos(width(), 320),
-        sprite("obstacle", { anim: "a" }),
-        area(),
-        body(),
-        "Object",
-        { passed: false }
-    ])
-})
-}
+            loop(1.7, () => {
+                add([
+                    pos(width(), 320),
+                    sprite("obstacle", { anim: "a" }),
+                    area(),
+                    body(),
+                    "Object",
+                    { passed: false }
+                ])
+            })
+        }
         loadSpriteAtlas('./sprites/dino.png', {
             "Dino": {
                 x: 0,
