@@ -11,14 +11,14 @@
     Versão 1.4.5
     <script type="module">
         // import kaplay
-        import kaboom from "https://unpkg.com/kaplay@3001.0.0-alpha.15/dist/kaboom.mjs";
-        kaboom({
+        import k from "https://unpkg.com/kaplay@3001.0.0-alpha.15/dist/kaboom.mjs";
+        k({
             background: [255, 255, 255],
         })
         function addObs() {
 
             loop(1.7, () => {
-                add([
+                k.add([
                     pos(width(), 320),
                     sprite("obstacle", { anim: "a" }),
                     area(),
@@ -28,7 +28,7 @@
                 ])
             })
         }
-        loadSpriteAtlas('./sprites/dino.png', {
+        k.loadSpriteAtlas('./sprites/dino.png', {
             "Dino": {
                 x: 0,
                 y: 0,
@@ -43,7 +43,7 @@
             }
         })
 
-        loadSpriteAtlas('./sprites/obstacle.png', {
+        k.loadSpriteAtlas('./sprites/obstacle.png', {
             "obstacle": {
                 x: 0,
                 y: 0,
@@ -62,32 +62,32 @@
 
         let score = 0
 
-        scene("gameover", () => {
-            add([
+        k.scene("gameover", () => {
+            k.add([
                 text("Game Over\n" + "Score:" + score)
             ])
 
-            onKeyPress("space", () => {
+            k.onKeyPress("space", () => {
                 go("game")
             })
         })
 
-        scene("game", () => {
+        k.scene("game", () => {
 
             score = 0
 
-            const score_text = add([
+            const score_text = k.add([
                 text(score)
             ])
 
-            const dino = add([
+            const dino = k.add([
                 pos(width() / 2 - 100, 100),
                 sprite("Dino", { anim: "run" }),
                 area(),
                 body(),
             ])
 
-            add([
+            k.add([
                 pos(0, height() / 2),
                 rect(width(), height()),
                 outline(2),
@@ -96,13 +96,13 @@
                 "ground"
             ])
 
-            keyPress("space", () => {
+            k.keyPress("space", () => {
                 if (dino.pos.y > 350) {
                     dino.jump(700)
                 }
             })
 
-            action("Object", (Object) => {
+            k.action("Object", (Object) => {
                 Object.move(-400, 0)
 
                 if (Object.passed === false && Object.pos.x < dino.pos.x) {
